@@ -1,0 +1,16 @@
+ library(Hmisc)
+mydata=spss.get("D:/depression.sav")
+install.packages('mediation')
+sample=sample(nrow(mydata),n/2,replace=F)
+newdata=mydata[sample,]  
+library(mediation)
+medModel<-glm(mediator~exposure+covariators, family=binomial(link = "logit"),
+              weights = weight,control=list(maxit=1000),
+              data=newdata)
+outModel<-glm(outcome~mediator*exposure+covariators,family=binomial(link = "logit"),
+             weights = weight,control=list(maxit=1000),
+             data=newdata)
+library(mediation)
+med<-mediate(model.m =medModel,model.y=outModel,treat = 'exposure',
+             mediator = 'mediator', weights = weight, data=newdata)
+summary(med)
