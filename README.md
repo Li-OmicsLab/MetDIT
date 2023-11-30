@@ -89,5 +89,11 @@ The TransOmics is responsible for transferring metabolom-ic data into 2D images.
     ```
     python 02-convert_by_cols.py
     ```
+- The converted samples are show as follows (with 128 pix):
 
+   ![cv-1](./images/cv1.png)
+   ![cv-2](./images/cv2.png)
+   
+   ![cv-2](./images/cv3.png)
+   ![cv-3](./images/cv4.png)
 
