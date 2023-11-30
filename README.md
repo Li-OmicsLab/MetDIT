@@ -105,7 +105,8 @@ If you want use this code to your own **custom dataset**, please follow the foll
    Our code must be used on the format data to guarantee get the correct results. The data type is shown as follow.
 
    * The first line is the name of bio-markers.
-   * The first row is the gound-truth label, represented by integers (*e.g. 1,2,3,...*)
+   * The first row is the gound-truth label, represented by integers (*e.g. 1,2,3,...*).
+   * Each line defines a individual sample. 
 
    ![data-type](./images/seq_data_sample.png)
 
