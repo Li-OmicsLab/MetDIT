@@ -96,4 +96,18 @@ The TransOmics is responsible for transferring metabolom-ic data into 2D images.
    
    ![cv-2](./images/cv3.png)
    ![cv-3](./images/cv4.png)
+  -------------
+
+If you want use this code to your own **custom dataset**, please follow the following steps.
+
+1. Create dataset
+   
+   Our code must be used on the format data to guarantee get the correct results. The data type is shown as follow.
+
+   * The first line is the name of bio-markers.
+   * The first row is the gound-truth label, represented by integers (*e.g. 1,2,3,...*)
+
+   ![data-type](./images/seq_data_sample.png)
+
+   
 
