@@ -1,0 +1,15 @@
+torch
+torchvision
+opencv-python
+numpy
+pandas
+matplotlib
+scikit-image
+sklearn
+tqdm
+pyts
+seaborn
+lightgbm
+xgboost
+
+
