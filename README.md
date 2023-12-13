@@ -5,6 +5,15 @@ This paper introduces a new method called MetDIT, designed to effectively analyz
 
 ![main-architecture](./images/figure-1.png)
 
+
+## :high_brightness: Demo Tool
+
+- We build a WebApp for TransOmics, it is a easier way to conduct trails on our proposed method. You can test the ***Data Transfer*** through the website [TransOmics](http://metdit.bioinformatics.vip/).
+
+- Since the NetOmics needs GPU to finish the model training, the WebApp is not available now. We plan to finish it in the future. 
+
+   <img src="images/metdit-app.png" width="85%">
+
 ## Mian Results
 We conduct extensive experiments on three benchmark dataset, including: **CA**, **ISR**, and **Fungal**. The model performance was evaluated using the area under the receiver operating characteristic curve (*AUROC*), *Precision*, *Recall*, and *Accuracy*.
 
@@ -68,9 +77,15 @@ We conduct extensive experiments on three benchmark dataset, including: **CA**, 
 
 ### Example of TransOmics
 
-The TransOmics is responsible for transferring metabolom-ic data into 2D images. It contains to parties: data pre-processing and image transfer. 
+The TransOmics is responsible for transferring metabolomics data into 2D images. It contains to parties: data pre-processing and image transfer. 
 
-1. Data pre-processing:
+1. Into the subfolder of TransOmics:
+    ```
+    cd TransOmics
+    ```
+
+
+2. Data pre-processing:
    ```
    python 01-feature_process.py -ofp {your csv data path} -sfp {the path to save} -log -zs
    ```
@@ -80,7 +95,7 @@ The TransOmics is responsible for transferring metabolom-ic data into 2D images.
     python 01-feature_process.py
     ```
 
-2. Data generation:
+3. Data generation:
     ```
     python 02-convert_by_cols.py -fn {the csv data path} -sp {the path to save converted images} -sz 32 -mt summation
     ```
@@ -89,14 +104,16 @@ The TransOmics is responsible for transferring metabolom-ic data into 2D images.
     ```
     python 02-convert_by_cols.py
     ```
+
 - The converted samples are show as follows (with 128 pix):
 
    ![cv-1](./images/cv1.png)
    ![cv-2](./images/cv2.png)
-   
+
    ![cv-2](./images/cv3.png)
    ![cv-3](./images/cv4.png)
-  -------------
+
+-------------
 
 If you want use this code to your own **custom dataset**, please follow the following steps.
 
@@ -105,10 +122,69 @@ If you want use this code to your own **custom dataset**, please follow the foll
    Our code must be used on the format data to guarantee get the correct results. The data type is shown as follow.
 
    * The first line is the name of bio-markers.
-   * The first row is the gound-truth label, represented by integers (*e.g. 1,2,3,...*).
+   * The first row is the gound-truth label, represented by integers (*e.g. 1,2,3,...*)
    * Each line defines a individual sample. 
 
-   ![data-type](./images/seq_data_sample.png)
+   <!-- ![data-type](./images/seq_data_sample.png) -->
+     <img src="images/seq_data_sample.png" width="90%">
+
+
+-----
+
+**Notable:** TransOmics can also be considered as a high-performance tool for feature selection and data normalization. 
+
+   - You can use the following command for feature ranking:
+
+      ```
+      python 02-conv xxx feature ranking
+      ```
+      
+      The feature ranking file should be saved on "ccc path" .
+
+   - For data normalization, you can execute the code:
+      
+      ```
+      python 02-conv xxx data normalization
+      ```
+
+      The normalized file can be found in "ccc path".
 
    
+   
 
+### Example of NetOmics
+
+The NetOmics is applied for representation learning and classification based on these converted 2D images. Details of user guidelines are shown as follows. 
+
+1. The dataset should be organized as follows.
+<img src="images/org-data.png" width="75%">
+
+
+2. Into the subfolder of NetOmics:
+    ```
+    cd NetOmics
+    ```
+
+3. Training the NetOmics:
+
+   ```
+   Python NetOmics.py --epoch 100 -a ResNet18 --use_cude
+   ```
+
+   Please sepcify the details of configuration in the NetOmcis.py for model training. 
+
+4. Test the model performance.
+   ```
+   Python evaluation.py
+   ```
+
+
+## Processing Speed
+We evaluated the processing speed of different algorithms both on CPU and GPU devices, where the CPU was Intel Xeon Platinum 8255C @ 2.50GHz, and the GPU was Nvidia GTX 3080 with 12GB memory. The comparsion results in shown in follows Table. Batch Size is a parameter that determines the number of results predicted by the algorithm at a time. When the Batch Size is set to 1, the algorithm predicts one result at a time. Conversely, when Batch Size is set to 1000, the algorithm has to predict 1000 results in parallel at a time. 
+
+<img src="images/eva-speed.png" width="80%">
+
+
+## :e-mail: Contact
+
+For help or issues about the project of MetDIT or WebApp, please email Yuyang Sha (syyshayuyang@163.com) or submit a GitHub issue.
