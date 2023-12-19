@@ -58,7 +58,7 @@ We conduct extensive experiments on three benchmark dataset, including: **CA**, 
 - The code is developed using python 3.8 on Ubuntu 20.04.
 - The TransOmics and inference NetOmics can run on cpu. 
 - If you want to train the NetOmics on custom dataset, Nvidia GPUs are needed. 
-- This code is development and tested using one Nvidia A100 GPU with 40GB memory.  
+- This code is development and tested using one Nvidia GTX 3080 GPU with 12GB memory.  
 
 
 ## Quick start
@@ -67,7 +67,7 @@ We conduct extensive experiments on three benchmark dataset, including: **CA**, 
 
 1. Clone this repo:
    ```
-   git clone https://github.com/Li-OmicsLab/OmicsDIT.git
+   git clone https://github.com/Li-OmicsLab/MetDIT.git
    ```
 
 2. Install dependencies:
