@@ -8,7 +8,7 @@ This paper introduces a new method called MetDIT, designed to effectively analyz
 
 ## :high_brightness: Demo Tool
 
-- We build a WebApp for TransOmics, it is a easier way to conduct trails on our proposed method. You can test the ***Data Transfer*** through the website [TransOmics](http://metdit.bioinformatics.vip/).
+- We have developed a web application for TransOmics, providing a more user-friendly way to conduct trials on our proposed method. You can test the ***Data Transfer*** through the website [TransOmics](http://metdit.bioinformatics.vip/).
 
 - Since the NetOmics needs GPU to finish the model training, the WebApp is not available now. We plan to finish it in the future. 
 
@@ -136,18 +136,18 @@ If you want use this code to your own **custom dataset**, please follow the foll
    - You can use the following command for feature ranking:
 
       ```
-      python 02-conv xxx feature ranking
+      python 01-feature_process.py -mt RF <or selection other feature ranking methods>
       ```
       
-      The feature ranking file should be saved on "ccc path" .
+      The feature ranking file should be saved on "demo_file (or other configuration path)" .
 
    - For data normalization, you can execute the code:
       
       ```
-      python 02-conv xxx data normalization
+      python 01-feature_process.py -log -norm minmax <or selection other normalziation approaches>
       ```
 
-      The normalized file can be found in "ccc path".
+      The normalized file can be found in "demo_file (or other configuration path)".
 
    
    
