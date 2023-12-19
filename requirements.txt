@@ -3,13 +3,13 @@ torchvision
 opencv-python
 numpy
 pandas
-matplotlib
 scikit-image
-sklearn
+scikit-learn
 tqdm
 pyts
 seaborn
 lightgbm
 xgboost
-
+matplotlib
+plot_metric
 
